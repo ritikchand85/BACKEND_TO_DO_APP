@@ -1,7 +1,7 @@
 import express from "express";
 import {
   deleteTask,
-  getTask,
+  getMyTask,
   newTask,
   updateTask,
 } from "../controllers/task.js";
@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/new", isAuthenticated, newTask);
 
-router.get("/my", isAuthenticated, getTask);
+router.get("/my", isAuthenticated, getMyTask);
 
 router
   .route("/:id")

@@ -13,10 +13,12 @@ const schema = new mongoose.Schema({
   password: {
     required: true,
     type: String,
-    //that's why we have done (+password) otherwise password will not be accessible
     select: false,
   },
- 
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const User = mongoose.model("User", schema);

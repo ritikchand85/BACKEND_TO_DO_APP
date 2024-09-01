@@ -4,7 +4,7 @@ import taskRouter from "./routes/task.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/error.js";
-import cors from 'cors'
+import cors from "cors";
 
 export const app = express();
 
@@ -15,14 +15,13 @@ config({
 // Using Middlewares
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(cors({
+app.use(
+  cors({
     origin: [process.env.FRONTEND_URL],
-    methods: ["GET","POST","PUT","DELETE"],
-    //if we don't set credentials it will not send headers or can say cookies to frontend
-    credentials:true,
-}))
-
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // Using routes
 app.use("/api/v1/users", userRouter);
